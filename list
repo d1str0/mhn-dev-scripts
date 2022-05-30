@@ -2,5 +2,6 @@
 
 aws ec2 describe-instances \
         --filter Name=tag-key,Values=Name \
-        --query 'Reservations[*].Instances[*].{Instance:InstanceId,Name:Tags[?Key==`Name`]|[0].Value}' \
+        --query \
+        'Reservations[*].Instances[*].{Instance:InstanceId,Name:Tags[?Key==`Name`]|[0].Value,IP:PublicIpAddress}' \
         --output table
